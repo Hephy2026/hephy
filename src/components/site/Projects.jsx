@@ -30,7 +30,7 @@ const STAGES = [
 
 export function Projects() {
   return (
-    <section id="projects" className="relative py-20 md:py-28" data-testid="projects-section">
+    <section id="projects" className="relative pb-4 md:pb-6" data-testid="projects-section">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-mint">What you'll build</p>
@@ -102,3 +102,4 @@ export function Projects() {
     </section>
   );
 }
+

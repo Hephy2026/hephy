@@ -41,7 +41,7 @@ const MODULES = [
 
 export function Curriculum() {
   return (
-    <section id="curriculum" className="relative bg-white py-20 md:py-28" data-testid="curriculum-section">
+    <section id="curriculum" className="relative bg-white pb-4 md:pb-6" data-testid="curriculum-section">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-coral">The curriculum</p>
@@ -89,3 +89,4 @@ export function Curriculum() {
     </section>
   );
 }
+

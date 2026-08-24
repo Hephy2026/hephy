@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { CircleCheck, LoaderCircle, Mail, MapPin, Phone } from 'lucide-react';
 import { Reveal, Doodle, Btn } from './shared';
 
-const API = `${import.meta.env.VITE_API_URL || 'https://hephy-redesign.preview.emergentagent.com'}/api`;
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '27120a9d-dc2b-4662-baf6-1eb654562fa5';
 const EXPERIENCE = ['Student / Fresher', 'Career switcher', 'Working professional', 'Freelancer'];
 const BATCH_OPTIONS = ['Weekend Batch', 'Weekday Batch', 'Evening Batch', 'Not sure yet'];
 
@@ -26,10 +26,25 @@ export function Enquiry() {
     }
     setLoading(true);
     try {
-      await axios.post(`${API}/enquiries`, form);
-      setDone(true);
-      toast.success("Thanks! We'll reach out within 24 hours. 🎉");
-      setForm({ name: '', email: '', phone: '', experience: '', batch: '', message: '' });
+      const response = await axios.post('https://api.web3forms.com/submit', {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `New Enquiry from ${form.name} - Hephy Website`,
+        from_name: 'Hephy Website',
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        experience: form.experience || 'Not specified',
+        batch: form.batch || 'Not specified',
+        message: form.message || 'No message provided',
+      });
+
+      if (response.data.success) {
+        setDone(true);
+        toast.success("Thanks! We'll reach out within 24 hours. 🎉");
+        setForm({ name: '', email: '', phone: '', experience: '', batch: '', message: '' });
+      } else {
+        toast.error(response.data.message || 'Something went wrong. Please try again.');
+      }
     } catch {
       toast.error('Something went wrong. Please try again.');
     } finally {
@@ -41,7 +56,7 @@ export function Enquiry() {
     'w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-ocean';
 
   return (
-    <section id="enquire" className="relative bg-white py-20 md:py-28" data-testid="enquiry-section">
+    <section id="enquire" className="relative bg-white py-4 md:py-6" data-testid="enquiry-section">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[0.85fr_1.15fr]">
         {/* Left info column */}
         <Reveal>
@@ -56,7 +71,7 @@ export function Enquiry() {
           <div className="mt-8 space-y-4">
             {/* Email */}
             <a
-              href="mailto:hello@hephy.design"
+              href="mailto:reachout@hephy.design"
               data-testid="contact-email"
               className="flex items-center gap-4 rounded-2xl border-2 border-ink/5 bg-cream p-4 transition-colors hover:border-ocean/30"
             >
@@ -65,13 +80,13 @@ export function Enquiry() {
               </span>
               <span>
                 <span className="block text-sm text-ink/50">Email</span>
-                <span className="font-medium text-ink">hello@hephy.design</span>
+                <span className="font-medium text-ink">reachout@hephy.design</span>
               </span>
             </a>
 
             {/* Phone */}
             <a
-              href="tel:+914400000000"
+              href="tel:+917978641900"
               data-testid="contact-phone"
               className="flex items-center gap-4 rounded-2xl border-2 border-ink/5 bg-cream p-4 transition-colors hover:border-coral/30"
             >
@@ -80,24 +95,35 @@ export function Enquiry() {
               </span>
               <span>
                 <span className="block text-sm text-ink/50">Phone</span>
-                <span className="font-medium text-ink">9600067898 / 7978641900</span>
+                <span className="font-medium text-ink">+91 7978641900</span>
               </span>
             </a>
 
-            {/* Address */}
+            {/* Address – Chennai */}
             <div className="flex items-center gap-4 rounded-2xl border-2 border-ink/5 bg-cream p-4">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-mint/20 text-emerald-700">
+              <span className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-xl bg-mint/20 text-emerald-700">
                 <MapPin className="h-5 w-5" />
               </span>
               <span>
-                <span className="block text-sm text-ink/50">Studio</span>
+                <span className="block text-sm text-ink/50">Studio — Chennai</span>
                 <span className="font-medium text-ink">A20, 1st Floor, 6th Street, A Block, Anna Nagar East, Chennai-600102</span>
+              </span>
+            </div>
+
+            {/* Address – Bangalore */}
+            <div className="flex items-center gap-4 rounded-2xl border-2 border-ink/5 bg-cream p-4">
+              <span className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-xl bg-mint/20 text-emerald-700">
+                <MapPin className="h-5 w-5" />
+              </span>
+              <span>
+                <span className="block text-sm text-ink/50">Studio — Bangalore</span>
+                <span className="font-medium text-ink">Nalapad Brigade Centre, Ground Floor, Whitefield Main Rd, Garudachar Palya, Mahadevapura, Bengaluru, Karnataka 560048</span>
               </span>
             </div>
           </div>
 
           <img
-            src="/mascot/peek.png"
+            src="https://res.cloudinary.com/fkmi7uzw/image/upload/v1787206897/hephy/mascot/mascot2.png"
             alt="Hephy mascot"
             className="mt-8 hidden w-40 animate-float lg:block"
           />
@@ -223,3 +249,4 @@ export function Enquiry() {
     </section>
   );
 }
+

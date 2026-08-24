@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
 
 export const NAV_LINKS = [
-  { label: 'Program', href: '#program' },
-  { label: 'Curriculum', href: '#curriculum' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Outcomes', href: '#outcomes' },
-  { label: 'Batches', href: '#batches' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Home', href: '/' },
+  { label: 'Studio', href: '/studio' },
+  { label: 'Program', href: '/#program' },
+  { label: 'Curriculum', href: '/#curriculum' },
+  { label: 'Batches', href: '/#batches' },
 ];
 
 export function Reveal({ children, delay = 0, y = 26, className = '' }) {
@@ -106,3 +105,4 @@ export function Marquee({ items, className = '' }) {
     </div>
   );
 }
+

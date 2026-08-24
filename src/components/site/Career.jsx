@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { Reveal, Doodle } from './shared';
 
 const STATS = [
-  { big: '500+', label: 'Learners mentored', bg: 'bg-ocean', fg: 'text-white', span: 'sm:col-span-2' },
+  { big: '10+', label: 'Learners mentored', bg: 'bg-ocean', fg: 'text-white', span: 'sm:col-span-2' },
   { big: '92%', label: 'Placed within 6 months', bg: 'bg-sunshine', fg: 'text-ink', span: '' },
   { big: '3–4', label: 'Portfolio case studies', bg: 'bg-mint', fg: 'text-ink', span: '' },
-  { big: '40+', label: 'Hiring partners', bg: 'bg-coral', fg: 'text-white', span: 'sm:col-span-2' },
+  { big: '12+', label: 'Hiring partners', bg: 'bg-coral', fg: 'text-white', span: 'sm:col-span-2' },
 ];
 
 const SKILLS = [
@@ -15,7 +15,7 @@ const SKILLS = [
 
 export function Career() {
   return (
-    <section id="outcomes" className="relative bg-white py-20 md:py-28" data-testid="career-section">
+    <section id="outcomes" className="relative bg-white pb-4 md:pb-6" data-testid="career-section">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-sunshine">The career advantage</p>
@@ -58,3 +58,4 @@ export function Career() {
     </section>
   );
 }
+

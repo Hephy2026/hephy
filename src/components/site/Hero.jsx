@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sparkles, ArrowRight, Star } from 'lucide-react';
 import { Btn, Doodle } from './shared';
+const heroImage = 'https://res.cloudinary.com/fkmi7uzw/image/upload/v1787206903/hephy/assets/hero-image.png';
 
 const lineVariant = {
   hidden: { y: '110%' },
@@ -31,7 +32,7 @@ export function Hero({ onEnquire, onCurriculum }) {
     <section
       ref={ref}
       id="top"
-      className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
+      className="relative overflow-hidden pt-32 pb-8 md:pt-40 md:pb-9"
       data-testid="hero-section"
     >
       {/* Background blobs */}
@@ -114,14 +115,17 @@ export function Hero({ onEnquire, onCurriculum }) {
         </div>
 
         {/* Right column – mascot */}
-        <motion.div style={{ y: yMascot }} className="flex justify-center">
-          <img
-            src="/mascot/hero.png"
-            alt="Hephy mascot"
+        <motion.div style={{ y: yMascot }} className="hidden md:flex justify-center">
+          <motion.img
+            src={heroImage}
+            alt="Hephy Hero Visual"
             className="w-64 drop-shadow-2xl md:w-80 lg:w-full max-w-sm"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           />
         </motion.div>
       </div>
     </section>
   );
 }
+

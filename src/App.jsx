@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { Toaster } from 'sonner';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
+import ServicesPage from './pages/ServicesPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import { Layout } from './components/site/Layout';
 
 export default function App() {
   useEffect(() => {
@@ -18,9 +22,15 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       <Toaster richColors position="top-right" />
-      <Landing />
-    </>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/studio" element={<ServicesPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

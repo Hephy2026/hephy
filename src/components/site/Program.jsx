@@ -34,7 +34,7 @@ const BENEFITS = [
 
 export function Program() {
   return (
-    <section id="program" className="relative py-20 md:py-28" data-testid="program-section">
+    <section id="program" className="relative pt-8 md:pt-12 pb-4 md:pb-6" data-testid="program-section">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-ocean">Why this program</p>
@@ -64,3 +64,4 @@ export function Program() {
     </section>
   );
 }
+

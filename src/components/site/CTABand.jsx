@@ -3,9 +3,9 @@ import { Btn, Marquee } from './shared';
 
 export function CTABand({ onEnquire }) {
   return (
-    <section className="relative py-10" data-testid="cta-band">
+    <section className="relative py-8" data-testid="cta-band">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-ocean px-8 py-14 text-center text-white shadow-lift md:px-16 md:py-20 grain">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-ocean px-8 py-10 text-center text-white shadow-lift md:px-16 md:py-16 grain">
           {/* decorative blobs */}
           <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/10" />
           <div className="pointer-events-none absolute -right-8 bottom-0 h-52 w-52 rounded-full bg-white/10" />
@@ -13,7 +13,7 @@ export function CTABand({ onEnquire }) {
           {/* Mascot */}
           <div className="relative mb-8 flex justify-center">
             <motion.img
-              src="/mascot/thumbsup.png"
+              src="https://res.cloudinary.com/fkmi7uzw/image/upload/v1787206897/hephy/mascot/mascot2.png"
               alt="Hephy mascot"
               className="w-40 drop-shadow-2xl md:w-52"
               animate={{ y: [0, -12, 0], rotate: [-2, 2, -2] }}
@@ -42,9 +42,10 @@ export function CTABand({ onEnquire }) {
       </div>
 
       {/* Marquee ticker */}
-      <div className="mt-14 border-y-2 border-ink/5 bg-cream py-6 text-ink">
+      <div className="mt-14 border-y-2 border-ink/5 bg-cream py-4 text-ink">
         <Marquee items={['Figma', 'UX Research', 'Design Systems', 'Prototyping', 'Portfolio', 'Mentorship', 'Chennai']} />
       </div>
     </section>
   );
 }
+

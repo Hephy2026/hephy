@@ -1,4 +1,4 @@
-import { Nav } from '@/components/site/Nav';
+import { useOutletContext } from 'react-router-dom';
 import { Hero } from '@/components/site/Hero';
 import { Program } from '@/components/site/Program';
 import { Curriculum } from '@/components/site/Curriculum';
@@ -8,20 +8,16 @@ import { Batches } from '@/components/site/Batches';
 import { CTABand } from '@/components/site/CTABand';
 import { Enquiry } from '@/components/site/Enquiry';
 import { FAQ } from '@/components/site/FAQ';
-import { Footer } from '@/components/site/Footer';
 import { WavyDivider } from '@/components/site/shared';
 
 export default function Landing() {
-  const goEnquire = () => {
-    document.getElementById('enquire')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { goEnquire } = useOutletContext();
   const goCurriculum = () => {
     document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="relative min-h-screen bg-cream">
-      <Nav onEnquire={goEnquire} />
+    <div className="w-full">
       <main>
         <Hero onEnquire={goEnquire} onCurriculum={goCurriculum} />
         <Program />
@@ -37,7 +33,7 @@ export default function Landing() {
         <Enquiry />
         <FAQ />
       </main>
-      <Footer onEnquire={goEnquire} />
     </div>
   );
 }
+

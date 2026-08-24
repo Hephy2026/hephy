@@ -67,7 +67,7 @@ function Item({ q, a, i }) {
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative py-20 md:py-28" data-testid="faq-section">
+    <section id="faq" className="relative pt-6 md:pt-8 pb-6 md:pb-9" data-testid="faq-section">
       <div className="mx-auto max-w-3xl px-6">
         <Reveal className="mb-12 text-center">
           <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-ocean">Got doubts?</p>
@@ -84,3 +84,4 @@ export function FAQ() {
     </section>
   );
 }
+
