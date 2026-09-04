@@ -20,8 +20,30 @@ export function Enquiry() {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.phone) {
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim()) {
       toast.error('Please fill in your name, email and phone.');
+      return;
+    }
+
+    if (form.name.trim().length < 2) {
+      toast.error('Please enter a valid name.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email.trim())) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+
+    const phoneRegex = /^[+]?[\d\s-]{7,15}$/;
+    if (!phoneRegex.test(form.phone.trim())) {
+      toast.error('Please enter a valid phone number.');
+      return;
+    }
+
+    if (!form.batch) {
+      toast.error('Please select a preferred batch.');
       return;
     }
     setLoading(true);
@@ -204,7 +226,7 @@ export function Enquiry() {
                   </select>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-ink/70">Preferred batch</label>
+                  <label className="mb-1.5 block text-sm font-medium text-ink/70">Preferred batch *</label>
                   <select
                     data-testid="enquiry-batch"
                     className={inputCls}
